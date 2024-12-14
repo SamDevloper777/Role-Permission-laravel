@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -30,9 +32,27 @@ Route::middleware('auth')->group(function () {
     Route::get('/roles/create',[RoleController::class,'create'])->name('roles.create');
     Route::post('/roles',[RoleController::class,'store'])->name('roles.store');
     Route::get('/roles/{id}/edit',[RoleController::class,'edit'])->name('roles.edit');
-    Route::post('/roles/{id}',action: [RoleController::class,'update'])->name('roles.update');
-    Route::delete('/roles/{id}',action: [RoleController::class,'destroy'])->name('roles.destroy');
+    Route::post('/roles/{id}', [RoleController::class,'update'])->name('roles.update');
+    Route::delete('/roles/{id}', [RoleController::class,'destroy'])->name('roles.destroy');
 
+    //article Routes
+
+    Route::get('/articles',[ArticleController::class,'index'])->name('articles.index');
+    Route::get('/articles/create',[ArticleController::class,'create'])->name('articles.create');
+    Route::post('/articles',[ArticleController::class,'store'])->name('articles.store');
+    Route::get('/articles/{id}/edit',[ArticleController::class,'edit'])->name('articles.edit');
+    Route::post('/articles/{id}', [ArticleController::class,'update'])->name('articles.update');
+    Route::delete('/articles/{id}', [ArticleController::class,'destroy'])->name('articles.destroy');
+
+    
+    //users routes
+    Route::get('/users',[UserController::class,'index'])->name('users.index');
+    // Route::get('/users/create',[ArticleController::class,'create'])->name('users.create');
+    // Route::post('/articles',[ArticleController::class,'store'])->name('articles.store');
+    Route::get('/users/{id}/edit',[UserController::class,'edit'])->name('users.edit');
+    Route::post('/users/{id}', [UserController::class,'update'])->name('users.update');
+    
+    // Route::delete('/articles/{id}', [ArticleController::class,'destroy'])->name('articles.destroy');
 
 });
 

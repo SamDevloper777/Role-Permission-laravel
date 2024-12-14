@@ -4,7 +4,7 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Roles/create
             </h2>
-            <a href="{{route('permission.index')}}" class="bg-slate-500 px-3 py-2 rounded text-white">back</a>
+            <a href="{{route('roles.index')}}" class="bg-slate-500 px-3 py-2 rounded text-white">back</a>
         </div>
     </x-slot>
 
@@ -15,9 +15,9 @@
                     <form action="{{route('roles.store')}}" method="post">
                         @csrf
                         <div>
-                            <label for="" class="text-sm font-medium">Name</label>
+                            <label for="" class="text-sm font-medium">Role</label>
                             <div>
-                                <input type="text" class="border-gray-300 shadow-sm w-1/2 rounded" name="name" placeholder="Enter Name">
+                                <input type="text" class="border-gray-300 shadow-sm w-1/2 rounded" name="name" placeholder="Enter role">
                                 @error('name')
                                 <p class="text-red-500 text-sm">{{$message}}</p>
                                 @enderror
